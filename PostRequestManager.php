@@ -36,8 +36,18 @@ if (isset($_POST["join"]) && $_POST["join"] === "login") {
     $user = $userRepo->Login($email, $password);
 
     if ($user) {
-        header("Location: profile.php");
-        exit();
+        if ($user->role ==  User::User) {
+            header("Location: profile.php");
+            exit();
+        }
+        if ($user->role ==  User::Organizer) {
+            header("Location: ./organizer/dashboard.php");
+            exit();
+        }
+        if ($user->role ==  User::Admin) {
+              header("Location: ./admin/dashboard.php");
+            exit();
+        }
     } else {
         header("Location: login.php");
         exit();
