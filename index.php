@@ -136,6 +136,16 @@
                 </div>
             </a>
 
+            <!-- LINKS -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.php" class="text-white font-display tracking-wider text-lg relative">
+                    HUB
+                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-crimson shadow-neon"></span>
+                </a>
+                <a href="tournament.php" class="text-gray-400 hover:text-white font-display tracking-wider text-lg transition-colors">TOURNAMENTS</a>
+                <a href="profile.php" class="text-gray-400 hover:text-white font-display tracking-wider text-lg transition-colors">PROFILE</a>
+            </div>
+=======
             
 
            
