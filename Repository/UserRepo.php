@@ -120,4 +120,15 @@ class userRepo implements ContractInterface {
     }
 }
 
+
+
+public function ChangeRole($id, $role) {
+    try {
+        $stmt = $this->db->prepare("UPDATE users SET role = :role WHERE id = :id");
+        $stmt->execute(['id' => $id, 'role' => $role]);
+    } catch (PDOException $e) {
+        error_log("Database error in ChangeRole, Please try again");
+    }
+}
+
 }   

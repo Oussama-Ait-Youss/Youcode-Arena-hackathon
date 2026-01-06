@@ -1,9 +1,20 @@
+<?php include_once "../PostRequestManager.php"; 
+if (isset( $_SESSION["userrole"]) &&  $_SESSION["userrole"] == User::Organizer)  {
+  header("Location: ../login.php");
+}
+
+session_start();
+// Organizers might need different data, but for now we'll keep it simple or empty
+// $usersibj = new userRepo();
+// $users = $usersibj->findAll(); // Organizers might not need to see all users
+?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouGame Arena – My Tournaments</title>
+    <title>YouGame Arena – Organizer Portal</title>
+   
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -22,6 +33,8 @@
                         cyan: '#00F0FF',
                         gold: '#FFD700',
                         violet: '#8B5CF6',
+                        success: '#22C55E'
+
                         success: '#22C55E',
                         warning: '#FACC15'
                     },
@@ -53,7 +66,6 @@
             background: linear-gradient(145deg, rgba(20, 25, 35, 0.7), rgba(10, 12, 18, 0.8));
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
         }
         .clip-path-slant {
             clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
@@ -68,12 +80,39 @@
         <!-- Logo -->
         <div class="h-24 flex items-center justify-center border-b border-white/5">
              <div class="text-3xl font-display font-bold text-white tracking-widest">
-                YOU<span class="text-crimson">GAME</span>
+             
             </div>
         </div>
 
         <!-- Nav -->
         <nav class="flex-1 p-6 space-y-2">
+
+            <div class="text-xs text-gray-500 font-bold uppercase tracking-widest mb-4">Management</div>
+            
+            <a class="flex items-center px-4 py-3 rounded-xl bg-crimson/10 border border-crimson/20 text-white group cursor-pointer">
+                <span class="text-xl mr-3 group-hover:scale-110 transition">📊</span>
+                <span class="font-bold tracking-wide">Dashboard</span>
+            </a>
+
+             <a class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer">
+                <span class="text-xl mr-3">⚔️</span>
+                <span class="font-bold tracking-wide">My Tournaments</span>
+            </a>
+            
+            <a class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer">
+                <span class="text-xl mr-3">🎮</span>
+                <span class="font-bold tracking-wide">Matches</span>
+            </a>
+
+             <div class="text-xs text-gray-500 font-bold uppercase tracking-widest mt-8 mb-4">Account</div>
+
+             <a class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer">
+                <span class="text-xl mr-3">⚙️</span>
+                <span class="font-bold tracking-wide">Settings</span>
+            </a>
+            
+            <a href="../index.php" class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer mt-10">
+
             <a href="#" class="flex items-center px-4 py-3 rounded-xl bg-crimson/10 border border-crimson/20 text-white group cursor-pointer">
                 <span class="text-xl mr-3">🏆</span>
                 <span class="font-bold tracking-wide">My Tournaments</span>
@@ -85,6 +124,7 @@
             </a>
 
             <a href="index.php" class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer mt-10">
+
                 <span class="text-xl mr-3">↩️</span>
                 <span class="font-bold tracking-wide">Back to Hub</span>
             </a>
@@ -93,162 +133,113 @@
         <!-- Profile -->
         <div class="p-6 border-t border-white/5">
             <div class="flex items-center gap-3">
+
+                <div class="w-10 h-10 rounded bg-crimson flex items-center justify-center font-bold text-black font-display text-xl">
+                    OR
+                </div>
+                <div>
+                     <div class="text-sm font-bold text-white leading-none">Organizer</div>
+                     <div class="text-[10px] text-green-500 font-bold uppercase tracking-widest mt-1">● Online</div>
+
                 <div class="w-10 h-10 rounded bg-gray-800 flex items-center justify-center font-bold text-gray-400 font-display text-xl border border-white/10">
                     AM
                 </div>
                 <div>
                      <div class="text-sm font-bold text-white leading-none">Amine Manager</div>
                      <div class="text-[10px] text-violet font-bold uppercase tracking-widest mt-1">Organizer</div>
+
                 </div>
             </div>
         </div>
     </aside>
 
     <!-- MAIN CONTENT -->
-    <main class="flex-1 ml-72 p-12 overflow-y-auto h-screen relative z-10">
-        
-        <!-- HEADER -->
-        <header class="flex justify-between items-center mb-12">
-            <div>
-                <h1 class="text-6xl font-display font-bold text-white tracking-wide">
-                    MY <span class="text-crimson">TOURNAMENTS</span>
-                </h1>
-                <p class="text-gray-400 text-lg mt-2 font-light">
-                    Manage your competitions and brackets
-                </p>
-            </div>
 
-            <a href="createTour.php" class="px-8 py-4 bg-crimson hover:bg-red-700 text-white font-display font-bold text-2xl tracking-widest clip-path-slant shadow-neon transition transform hover:-translate-y-1">
-                CREATE NEW
-            </a>
+    <main class="flex-1 ml-72 p-10 overflow-y-auto h-screen relative z-10">
+        
+        <!-- Header -->
+        <header class="flex justify-between items-end mb-12">
+            <div>
+                <h1 class="text-5xl font-display font-bold text-white tracking-wide">ORGANIZER HUB</h1>
+                <p class="text-gray-400 mt-2">Manage your battlegrounds.</p>
+            </div>
+            <button class="px-6 py-3 bg-white/5 hover:bg-crimson/20 border border-white/10 hover:border-crimson text-crimson font-bold tracking-widest rounded transition-all flex items-center gap-2">
+                <span class="text-xl">+</span> CREATE TOURNAMENT
+            </button>
         </header>
 
-        <!-- STATS -->
-        <section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-            <div class="glass-card p-6 rounded-2xl border-l-4 border-crimson">
-                <div class="text-4xl font-display font-bold text-white">3</div>
-                <div class="text-xs text-gray-400 uppercase tracking-widest mt-1">Total Events</div>
-            </div>
-             <div class="glass-card p-6 rounded-2xl border-l-4 border-success">
-                <div class="text-4xl font-display font-bold text-success">1</div>
-                <div class="text-xs text-gray-400 uppercase tracking-widest mt-1">In Progress</div>
-            </div>
-             <div class="glass-card p-6 rounded-2xl border-l-4 border-warning">
-                <div class="text-4xl font-display font-bold text-warning">1</div>
-                <div class="text-xs text-gray-400 uppercase tracking-widest mt-1">Open</div>
-            </div>
-             <div class="glass-card p-6 rounded-2xl border-l-4 border-gray-500">
-                <div class="text-4xl font-display font-bold text-gray-400">1</div>
-                <div class="text-xs text-gray-500 uppercase tracking-widest mt-1">Completed</div>
-            </div>
-        </section>
-
-        <!-- TOURNAMENT LIST -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-            <!-- CARD 1 -->
-            <div class="glass-card p-8 rounded-2xl group relative hover:border-crimson/50 transition duration-300">
-                <div class="absolute top-4 right-4 bg-success/10 text-success border border-success/20 px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest">
-                    In Progress
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                <div class="absolute right-0 top-0 p-8 opacity-10 group-hover:opacity-20 transition transform group-hover:scale-110">
+                     <svg class="w-24 h-24 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                 </div>
-                
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-16 h-16 bg-gray-800 rounded-lg flex items-center justify-center text-3xl border border-white/10">
-                        ♟️
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-white group-hover:text-crimson transition">Chess Blitz Arena</h3>
-                        <div class="text-gray-500 text-sm">Strategy • On-site</div>
-                    </div>
-                </div>
-
-                <div class="w-full bg-gray-800 h-1.5 rounded-full mb-6 overflow-hidden">
-                    <div class="h-full bg-success w-full"></div>
-                </div>
-
-                <div class="flex justify-between items-center border-t border-white/5 pt-4">
-                     <div class="text-sm">
-                        <span class="text-gray-500 uppercase text-[10px] tracking-widest block">Prize Pool</span>
-                        <span class="text-gold font-bold">2,000 MAD</span>
-                    </div>
-                    <div class="flex gap-2">
-                        <button class="px-4 py-2 bg-white/5 hover:text-white text-gray-400 text-sm font-bold tracking-wider rounded border border-white/5 transition">VIEW</button>
-                        <button class="px-4 py-2 bg-crimson/10 text-crimson hover:bg-crimson hover:text-white text-sm font-bold tracking-wider rounded border border-crimson/20 transition">MANAGE</button>
-                    </div>
-                </div>
+                <div class="text-5xl font-display font-bold text-white mb-2">4</div>
+                <div class="text-xs text-gray-400 font-bold uppercase tracking-widest">Active Tournaments</div>
+                <div class="mt-4 text-green-500 text-sm font-mono">▲ 1 New</div>
             </div>
 
-            <!-- CARD 2 -->
-            <div class="glass-card p-8 rounded-2xl group relative hover:border-crimson/50 transition duration-300">
-                <div class="absolute top-4 right-4 bg-warning/10 text-warning border border-warning/20 px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest">
-                    Open
-                </div>
-                
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-16 h-16 bg-gray-800 rounded-lg flex items-center justify-center text-3xl border border-white/10">
-                        🎯
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-white group-hover:text-crimson transition">Valorant Night Cup</h3>
-                        <div class="text-gray-500 text-sm">FPS • Online</div>
-                    </div>
-                </div>
-
-                 <div class="w-full bg-gray-800 h-1.5 rounded-full mb-6 overflow-hidden">
-                    <div class="h-full bg-warning w-[60%]"></div>
-                </div>
-
-                <div class="flex justify-between items-center border-t border-white/5 pt-4">
-                     <div class="text-sm">
-                        <span class="text-gray-500 uppercase text-[10px] tracking-widest block">Prize Pool</span>
-                        <span class="text-gold font-bold">5,000 MAD</span>
-                    </div>
-                    <div class="flex gap-2">
-                         <button class="px-4 py-2 bg-white/5 hover:text-white text-gray-400 text-sm font-bold tracking-wider rounded border border-white/5 transition">EDIT</button>
-                        <button class="px-4 py-2 bg-crimson/10 text-crimson hover:bg-crimson hover:text-white text-sm font-bold tracking-wider rounded border border-crimson/20 transition">MANAGE</button>
-                    </div>
-                </div>
+             <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                <div class="text-5xl font-display font-bold text-gold mb-2">128</div>
+                <div class="text-xs text-gray-400 font-bold uppercase tracking-widest">Participants</div>
+                <div class="mt-4 text-gray-500 text-sm font-mono">Ready to compete</div>
             </div>
 
-            <!-- CARD 3 -->
-            <div class="glass-card p-8 rounded-2xl group relative opacity-70 hover:opacity-100 transition duration-300">
-                 <div class="absolute top-4 right-4 bg-gray-700/50 text-gray-400 border border-white/5 px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest">
-                    Completed
-                </div>
-                
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-16 h-16 bg-gray-800 rounded-lg flex items-center justify-center text-3xl border border-white/10">
-                        ⚽
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-white group-hover:text-gray-300 transition">FIFA Winter Cup</h3>
-                        <div class="text-gray-500 text-sm">Sports • On-site</div>
-                    </div>
-                </div>
-
-                <div class="bg-gray-800/50 p-3 rounded mb-6 flex items-center gap-3 border border-white/5">
-                    <span class="text-xl">👑</span>
-                    <div>
-                        <div class="text-[10px] text-gray-500 uppercase tracking-widest">Winner</div>
-                        <div class="font-bold text-white">Yassine</div>
-                    </div>
-                </div>
-
-                <div class="flex justify-between items-center border-t border-white/5 pt-4">
-                     <div class="text-sm">
-                        <span class="text-gray-500 uppercase text-[10px] tracking-widest block">Prize Pool</span>
-                        <span class="text-gray-400 font-bold">1,000 MAD</span>
-                    </div>
-                    <div class="flex gap-2">
-                        <button class="px-4 py-2 bg-white/5 hover:text-white text-gray-400 text-sm font-bold tracking-wider rounded border border-white/5 transition">RESULTS</button>
-                    </div>
-                </div>
+             <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                <div class="text-5xl font-display font-bold text-crimson mb-2">12</div>
+                <div class="text-xs text-gray-400 font-bold uppercase tracking-widest">Pending Matches</div>
+                <div class="mt-4 text-crimson text-sm font-mono">Needs scheduling</div>
             </div>
-
         </div>
 
+        <!-- Recent Activity Table (Placeholder for Organizer specific content) -->
+        <section class="glass-card rounded-2xl overflow-hidden border border-white/5">
+            <div class="p-6 border-b border-white/5 flex justify-between items-center">
+                <h3 class="font-display font-bold text-xl text-white tracking-wide">YOUR TOURNAMENTS</h3>
+                <div class="flex gap-2">
+                    <button class="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:text-white transition">←</button>
+                    <button class="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:text-white transition">→</button>
+                </div>
+            </div>
+            
+            <table class="w-full text-left">
+                <thead class="bg-white/5 text-xs text-gray-500 uppercase tracking-widest font-bold">
+                    <tr>
+                        <th class="px-6 py-4">Tournament Name</th>
+                        <th class="px-6 py-4">Game</th>
+                        <th class="px-6 py-4">Status</th>
+                        <th class="px-6 py-4">Participants</th>
+                        <th class="px-6 py-4 text-right">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-sm text-gray-300">
+                    <tr class="hover:bg-white/5 transition">
+                        <td class="px-6 py-4 font-bold text-white">Valorant Winter Cup</td>
+                        <td class="px-6 py-4 text-gold">Valorant</td>
+                        <td class="px-6 py-4"><span class="bg-green-500/10 text-green-500 px-2 py-1 rounded text-xs font-bold uppercase border border-green-500/20">Ongoing</span></td>
+                        <td class="px-6 py-4">16/32</td>
+                        <td class="px-6 py-4 text-right">
+                            <button class="text-gray-500 hover:text-white transition mr-2">Manage</button>
+                        </td>
+                    </tr>
+                     <tr class="hover:bg-white/5 transition">
+                        <td class="px-6 py-4 font-bold text-white">LoL Community Bash</td>
+                        <td class="px-6 py-4">League of Legends</td>
+                        <td class="px-6 py-4"><span class="bg-blue-500/10 text-blue-500 px-2 py-1 rounded text-xs font-bold uppercase border border-blue-500/20">Registration</span></td>
+                        <td class="px-6 py-4">64/64</td>
+                         <td class="px-6 py-4 text-right">
+                            <button class="text-gray-500 hover:text-white transition mr-2">Manage</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
     </main>
+
 </body>
 </html>
+
+  
 
 
