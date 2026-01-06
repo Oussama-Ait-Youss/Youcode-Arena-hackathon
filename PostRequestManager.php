@@ -24,3 +24,22 @@ if (isset($_POST["join"]) && $_POST["join"] === "signup") {
     header("Location: profile.php");
     exit();
 }
+
+
+
+if (isset($_POST["join"]) && $_POST["join"] === "login") { 
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $userRepo = new UserRepo();
+    $user = $userRepo->Login($email, $password);
+
+    if ($user) {
+        header("Location: profile.php");
+        exit();
+    } else {
+        header("Location: login.php");
+        exit();
+    }
+}
