@@ -30,6 +30,18 @@ tailwind.config = {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 
 <style>
@@ -50,11 +62,11 @@ tailwind.config = {
     <p class="text-gray-400 mt-2">Create your account</p>
   </div>
 
-  <form class="space-y-6">
+  <form class="space-y-6" action="./PostRequestManager.php" method="POST">
     <!-- Username -->
     <div>
       <label class="block text-gray-400 text-sm mb-2" for="username">Username</label>
-      <input type="text" id="username" placeholder="Your nickname"
+      <input type="text" id="username" placeholder="Your nickname" name="username"
         class="w-full p-4 rounded-xl bg-bg border border-border text-gray-100 placeholder-gray-500
                focus:outline-none focus:ring-2 focus:ring-accent1 focus:border-accent1 transition"/>
     </div>
@@ -62,7 +74,7 @@ tailwind.config = {
     <!-- Email -->
     <div>
       <label class="block text-gray-400 text-sm mb-2" for="email">Email</label>
-      <input type="email" id="email" placeholder="you@example.com"
+      <input type="email" id="email" placeholder="you@example.com" name="email"
         class="w-full p-4 rounded-xl bg-bg border border-border text-gray-100 placeholder-gray-500
                focus:outline-none focus:ring-2 focus:ring-accent1 focus:border-accent1 transition"/>
     </div>
@@ -70,7 +82,7 @@ tailwind.config = {
     <!-- Password -->
     <div>
       <label class="block text-gray-400 text-sm mb-2" for="password">Password</label>
-      <input type="password" id="password" placeholder="********"
+      <input type="password" id="password" placeholder="********" name="password"
         class="w-full p-4 rounded-xl bg-bg border border-border text-gray-100 placeholder-gray-500
                focus:outline-none focus:ring-2 focus:ring-accent1 focus:border-accent1 transition"/>
     </div>
@@ -82,7 +94,7 @@ tailwind.config = {
         class="w-full p-4 rounded-xl bg-bg border border-border text-gray-100 placeholder-gray-500
                focus:outline-none focus:ring-2 focus:ring-accent1 focus:border-accent1 transition"/>
     </div>
-
+    <input type="hidden" name="join" value="signup"/>
     <!-- Register Button -->
     <button type="submit"
       class="relative overflow-hidden group w-full py-4
@@ -95,6 +107,7 @@ tailwind.config = {
              bg-gradient-to-r from-accent1 to-accent3 transition-all duration-300
              group-hover:w-2/3"></span>
     </button>
+
   </form>
 
   <div class="mt-6 text-center text-gray-400 text-sm">
