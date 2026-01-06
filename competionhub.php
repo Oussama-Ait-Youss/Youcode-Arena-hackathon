@@ -9,6 +9,7 @@ $categories = [
     ['name' => 'League of Legends', 'slug' => 'lol', 'icon' => '⚔️'],
 ];
 
+
 // Mock Data for Posts
 $posts = [
     [
