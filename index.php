@@ -136,10 +136,15 @@
                 </div>
             </a>
 
-    
-            
-
-           
+            <!-- AUTH BUTTONS -->
+            <div class="flex items-center gap-4">
+                <a href="login.php" class="px-6 py-2 rounded border border-white/10 hover:border-white text-white font-display font-bold tracking-wider transition-colors">
+                    LOGIN
+                </a>
+                <a href="register.php" class="px-6 py-2 rounded bg-crimson hover:bg-red-700 text-white font-display font-bold tracking-wider shadow-neon transition-all hover:-translate-y-1">
+                    SIGN UP
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -394,11 +399,7 @@
             
             <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-gray-600 text-xs">© 2024 YouCode Arena. All rights reserved.</p>
-                <div class="flex gap-4">
-                    <a href="#" class="text-gray-600 hover:text-white transition text-lg">🐦</a>
-                    <a href="#" class="text-gray-600 hover:text-white transition text-lg">👾</a>
-                    <a href="#" class="text-gray-600 hover:text-white transition text-lg">📸</a>
-                </div>
+            
             </div>
         </div>
     </footer>
