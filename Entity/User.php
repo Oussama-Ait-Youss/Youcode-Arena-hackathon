@@ -9,8 +9,8 @@ class User
     private string $email;
     private string $password;
     private string $role;
-    private ?string $avatar_url;
-    private ?string $bio;
+    private string $avatar_url;
+    private string $bio;
     private string $created_at;
     const Admin = 'admin';
     const Organizer = 'organizer';
@@ -21,8 +21,7 @@ class User
         string $email,
         string $password,
         string $role,
-        ?string $avatar_url,
-        ?string $bio,
+        
         string $created_at
     ) {
 
@@ -30,8 +29,7 @@ class User
         $this->email = $email;
         $this->password = $password;
         $this->role = $role;
-        $this->avatar_url = $avatar_url;
-        $this->bio = $bio;
+    
         $this->created_at = $created_at;
     }
     public function __get(string $property)
@@ -41,5 +39,11 @@ class User
     public function setID($id)
     {
         $this->id = $id;
+    }
+
+
+    public function __set($property, $value)
+    {
+        $this->$property = $value;
     }
 }
