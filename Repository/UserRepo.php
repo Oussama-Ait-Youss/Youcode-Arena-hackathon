@@ -1,22 +1,46 @@
 <?php 
 include_once __DIR__ . '/../interface/interface.php';   
-include_once './config/db.php';
+include_once __DIR__ . '/../config/db.php';
 
 class userRepo implements ContractInterface {
       private $db;
+      public function __construct() {
+        
+        $conn = Database::getInstance();
+
+        $this->db = $conn->getConnection();
+    }
     public function findById($id) {
       
     }
 
     public function findAll() {
-    
+        $stmt = $this->db->prepare("SELECT * FROM users");
+        $stmt->execute();
+        $usersData = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $users = [];
+
+        foreach ($usersData as $data) {
+            $user = new User(
+             
+                $data->username,
+                $data->email,
+                $data->password,
+                $data->role,
+                $data->created_at,
+             
+            );
+            $user->setID($data->id);
+            $user->avatar_url = $data->avatar_url ?? '';
+            $user->bio = $data->bio ?? '';
+            $users[] = $user;
+        }
+        return $users;
     }
 
 
   
-    public function __construct() {
-        $this->db = Database::getInstance()->getConnection();
-    }
+    
 
 
 
@@ -28,7 +52,7 @@ class userRepo implements ContractInterface {
             $checkStmt = $this->db->prepare("SELECT id FROM users WHERE email = :email LIMIT 1");
             $checkStmt->execute(['email' => $user->email]);
             if ($checkStmt->rowCount() > 0) {
-                // here khasni ntl3 xi alert;
+                // here alert;
             }
             $stmt = $this->db->prepare("INSERT INTO users (username, email, password, role ,created_at
             ) VALUES (:username, :email, :password, :role, :created_at)");
@@ -91,7 +115,7 @@ class userRepo implements ContractInterface {
        
     } catch (PDOException $e) {
         // Log the error for debugging
-        header("Location: ./lojgin.php");
+        header("Location: ./login.php");
         exit();
     }
 }

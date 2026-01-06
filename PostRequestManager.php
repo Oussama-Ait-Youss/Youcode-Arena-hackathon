@@ -1,6 +1,6 @@
 <?php
-include_once './Entity/User.php';
-include_once './Repository/UserRepo.php';
+include_once __DIR__ . '/Entity/User.php';
+include_once __DIR__ . '/Repository/UserRepo.php';
 
 
 
@@ -36,8 +36,18 @@ if (isset($_POST["join"]) && $_POST["join"] === "login") {
     $user = $userRepo->Login($email, $password);
 
     if ($user) {
-        header("Location: profile.php");
-        exit();
+        if ($user->role ==  User::User) {
+            header("Location: profile.php");
+            exit();
+        }
+        if ($user->role ==  User::Organizer) {
+            header("Location: ./organizer/dashboard.php");
+            exit();
+        }
+        if ($user->role ==  User::Admin) {
+              header("Location: ./admin/dashboard.php");
+            exit();
+        }
     } else {
         header("Location: login.php");
         exit();

@@ -107,29 +107,29 @@ tailwind.config = {
         </div>
 
         <!-- Form -->
-        <form class="space-y-5">
-            
+        <form class="space-y-5" action="PostRequestManager.php" method="post">
+            <input type="hidden" name="join" value="signup">
             <div class="space-y-2">
-                <label class="text-xs font-bold text-gray-500 uppercase tracking-wider">Username</label>
-                <input type="text" placeholder="PlayerOne" 
+                <label class="text-xs font-bold text-gray-500 uppercase tracking-wider" >Username</label>
+                <input type="text" placeholder="PlayerOne"  name="username"
                     class="w-full bg-black/40 border border-white/10 rounded p-4 text-white placeholder-gray-700 focus:outline-none focus:border-crimson transition-colors font-mono">
             </div>
 
             <div class="space-y-2">
                 <label class="text-xs font-bold text-gray-500 uppercase tracking-wider">Email Address</label>
-                <input type="email" placeholder="agent@yougame.arena" 
+                <input type="email" placeholder="agent@yougame.arena" name="email"
                     class="w-full bg-black/40 border border-white/10 rounded p-4 text-white placeholder-gray-700 focus:outline-none focus:border-crimson transition-colors font-mono">
             </div>
 
             <div class="grid grid-cols-2 gap-4">
                 <div class="space-y-2">
                     <label class="text-xs font-bold text-gray-500 uppercase tracking-wider">Password</label>
-                    <input type="password" placeholder="••••••••" 
+                    <input type="password" placeholder="••••••••" name="password"
                         class="w-full bg-black/40 border border-white/10 rounded p-4 text-white placeholder-gray-700 focus:outline-none focus:border-crimson transition-colors font-mono">
                 </div>
                  <div class="space-y-2">
                     <label class="text-xs font-bold text-gray-500 uppercase tracking-wider">Confirm</label>
-                    <input type="password" placeholder="••••••••" 
+                    <input type="password" placeholder="••••••••" name="confirm"
                         class="w-full bg-black/40 border border-white/10 rounded p-4 text-white placeholder-gray-700 focus:outline-none focus:border-crimson transition-colors font-mono">
                 </div>
             </div>

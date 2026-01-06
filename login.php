@@ -72,15 +72,9 @@
             <p class="text-gray-400 text-sm tracking-widest uppercase">Member Login</p>
         </div>
 
-        <!-- Form -->
-        <form class="space-y-6">
-            
-            <div class="space-y-2">
-                <label class="text-xs font-bold text-gray-500 uppercase tracking-wider">Email Address</label>
-                <input type="email" placeholder="agent@yougame.arena" 
-                    class="w-full bg-black/40 border border-white/10 rounded p-4 text-white placeholder-gray-700 focus:outline-none focus:border-crimson transition-colors font-mono">
-            </div>
-=======
+      
+       
+
   <form class="space-y-6" action="./PostRequestManager.php" method="POST">
     <!-- Email -->
     <div>
@@ -103,14 +97,15 @@
                     <label class="text-xs font-bold text-gray-500 uppercase tracking-wider">Password</label>
                     <a href="#" class="text-xs text-crimson hover:text-white transition">FORGOT?</a>
                 </div>
-                <input type="password" placeholder="••••••••" 
-                    class="w-full bg-black/40 border border-white/10 rounded p-4 text-white placeholder-gray-700 focus:outline-none focus:border-crimson transition-colors font-mono">
+               
             </div>
 
             <!-- Action -->
             <button type="submit" class="w-full py-4 bg-crimson hover:bg-red-700 text-white font-display font-bold text-2xl tracking-widest clip-path-slant shadow-neon transition-all transform hover:-translate-y-1 mt-6">
                 ENTER
             </button>
+
+
 
         </form>
 

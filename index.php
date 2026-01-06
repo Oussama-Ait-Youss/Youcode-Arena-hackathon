@@ -136,7 +136,6 @@
                 </div>
             </a>
 
-
             <!-- AUTH BUTTONS -->
             <div class="flex items-center gap-4">
                 <a href="login.php" class="px-6 py-2 rounded border border-white/10 hover:border-white text-white font-display font-bold tracking-wider transition-colors">
