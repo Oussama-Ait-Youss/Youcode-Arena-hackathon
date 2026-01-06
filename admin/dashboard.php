@@ -1,7 +1,12 @@
 <?php include_once "../PostRequestManager.php"; 
+if (isset( $_SESSION["userrole"]) &&  $_SESSION["userrole"] != User::Admin)  {
+  header("Location: ../login.php");
+}
+
 session_start();
 $usersibj = new userRepo();
 $users = $usersibj->findAll();
+
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -141,7 +146,7 @@ $users = $usersibj->findAll();
                 <div class="absolute right-0 top-0 p-8 opacity-10 group-hover:opacity-20 transition transform group-hover:scale-110">
                      <svg class="w-24 h-24 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                 </div>
-                <div class="text-5xl font-display font-bold text-white mb-2">1,240</div>
+                <div class="text-5xl font-display font-bold text-white mb-2"><?php echo count($users)?></div>
                 <div class="text-xs text-gray-400 font-bold uppercase tracking-widest">Total Users</div>
                 <div class="mt-4 text-green-500 text-sm font-mono">▲ 12% this week</div>
             </div>
@@ -174,38 +179,54 @@ $users = $usersibj->findAll();
                     <tr>
                         <th class="px-6 py-4">User</th>
                         <th class="px-6 py-4">Role</th>
-                        <th class="px-6 py-4">Status</th>
+                        <th class="px-6 py-4">Created At</th>
+                        <th class="px-6 py-4">Change role</th>
+                     
                         <th class="px-6 py-4 text-right">Action</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-white/5 text-sm text-gray-300">
+                  <?php foreach ($users as $user) { ?>
                     <tr class="hover:bg-white/5 transition">
-                        <td class="px-6 py-4 font-bold text-white">Amine_Manager</td>
-                        <td class="px-6 py-4 text-gold">Organizer</td>
+                        <td class="px-6 py-4 font-bold text-white"><?php echo $user->username; ?></td>
+                        <td class="px-6 py-4 text-gold"><?php echo $user->role; ?></td>
+                        <td class="px-6 py-4"><span class="bg-green-500/10 text-green-500 px-2 py-1 rounded text-xs font-bold uppercase border border-green-500/20"><?php echo $user->created_at; ?></span></td>
+                       <?php if ($user->role != User::Admin): ?>
+    <td class="px-6 py-4">
+        <?php
+        $isUser = ($user->role == User::User);
+        $newRole = $isUser ? 'organizer' : 'user';
+        $buttonText = $isUser ? 'Make Organizer' : 'Make User';
+        ?>
+        
+        <form action="../PostRequestManager.php" method="post" class="inline">
+            <input type="hidden" name="changerole" value="<?=$newRole ?>">
+            <input type="hidden" name="id" value="<?= $user->id ?>">
+            
+            <button 
+                type="submit" 
+                class="bg-green-500/10 text-green-500 px-2 py-1 rounded text-xs font-bold uppercase border border-green-500/20 hover:bg-green-500/20 transition-colors cursor-pointer"
+            >
+                <?= htmlspecialchars($buttonText) ?>
+            </button>
+        </form>
+    </td>
+<?php else: ?>
+    <td class="px-6 py-4">
+        <span class="bg-gray-500/10 text-gray-500 px-2 py-1 rounded text-xs font-bold uppercase border border-gray-500/20">
+            Admin
+        </span>
+    </td>
+<?php endif; ?>
+
+
                         <td class="px-6 py-4"><span class="bg-green-500/10 text-green-500 px-2 py-1 rounded text-xs font-bold uppercase border border-green-500/20">Active</span></td>
                         <td class="px-6 py-4 text-right">
                             <button class="text-gray-500 hover:text-white transition mr-2">Edit</button>
                             <button class="text-crimson hover:text-red-400 transition">Ban</button>
                         </td>
                     </tr>
-                     <tr class="hover:bg-white/5 transition">
-                        <td class="px-6 py-4 font-bold text-white">Player_One</td>
-                        <td class="px-6 py-4">User</td>
-                        <td class="px-6 py-4"><span class="bg-green-500/10 text-green-500 px-2 py-1 rounded text-xs font-bold uppercase border border-green-500/20">Active</span></td>
-                         <td class="px-6 py-4 text-right">
-                            <button class="text-gray-500 hover:text-white transition mr-2">Edit</button>
-                            <button class="text-crimson hover:text-red-400 transition">Ban</button>
-                        </td>
-                    </tr>
-                    <tr class="hover:bg-white/5 transition">
-                        <td class="px-6 py-4 font-bold text-white">Suspicious_User</td>
-                        <td class="px-6 py-4">User</td>
-                        <td class="px-6 py-4"><span class="bg-crimson/10 text-crimson px-2 py-1 rounded text-xs font-bold uppercase border border-crimson/20">Flagged</span></td>
-                         <td class="px-6 py-4 text-right">
-                            <button class="text-gray-500 hover:text-white transition mr-2">Edit</button>
-                            <button class="text-crimson hover:text-red-400 transition">Ban</button>
-                        </td>
-                    </tr>
+                  <?php } ?>
                 </tbody>
             </table>
         </section>

@@ -33,41 +33,7 @@
                 }
             }
         }
-  
-tailwind.config = {
-  darkMode: 'class',
-  theme: {
-    extend: {
-      colors: {
-        bg: '#070A10',
-        panel: '#0E1624',
-        border: '#1E293B',
-        accent1: '#38BDF8',
-        accent2: '#8B5CF6',
-        accent3: '#F472B6',
-        danger: '#EF4444',
-        success: '#22C55E'
-      },
-      fontFamily: {
-        display: ['Teko', 'sans-serif'],
-        sans: ['Inter', 'sans-serif']
-      }
-    }
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
+    </script>
 
     <style>
         body {
@@ -107,37 +73,45 @@ tailwind.config = {
         </div>
 
         <!-- Form -->
-        <form class="space-y-5" action="PostRequestManager.php" method="post">
+        <form class="space-y-6" action="PostRequestManager.php" method="post">
             <input type="hidden" name="join" value="signup">
-            <div class="space-y-2">
-                <label class="text-xs font-bold text-gray-500 uppercase tracking-wider" >Username</label>
-                <input type="text" placeholder="PlayerOne"  name="username"
-                    class="w-full bg-black/40 border border-white/10 rounded p-4 text-white placeholder-gray-700 focus:outline-none focus:border-crimson transition-colors font-mono">
+            
+            <!-- Username -->
+            <div>
+                <label class="block text-gray-400 text-sm mb-2">Username</label>
+                <input type="text" placeholder="PlayerOne" name="username"
+                    class="w-full p-4 rounded-xl bg-bg border border-border text-gray-100 placeholder-gray-500
+                           focus:outline-none focus:ring-2 focus:ring-crimson focus:border-transparent transition">
             </div>
 
-            <div class="space-y-2">
-                <label class="text-xs font-bold text-gray-500 uppercase tracking-wider">Email Address</label>
+            <!-- Email -->
+            <div>
+                <label class="block text-gray-400 text-sm mb-2">Email Address</label>
                 <input type="email" placeholder="agent@yougame.arena" name="email"
-                    class="w-full bg-black/40 border border-white/10 rounded p-4 text-white placeholder-gray-700 focus:outline-none focus:border-crimson transition-colors font-mono">
+                    class="w-full p-4 rounded-xl bg-bg border border-border text-gray-100 placeholder-gray-500
+                           focus:outline-none focus:ring-2 focus:ring-crimson focus:border-transparent transition">
             </div>
 
+            <!-- Password -->
             <div class="grid grid-cols-2 gap-4">
-                <div class="space-y-2">
-                    <label class="text-xs font-bold text-gray-500 uppercase tracking-wider">Password</label>
+                <div>
+                    <label class="block text-gray-400 text-sm mb-2">Password</label>
                     <input type="password" placeholder="••••••••" name="password"
-                        class="w-full bg-black/40 border border-white/10 rounded p-4 text-white placeholder-gray-700 focus:outline-none focus:border-crimson transition-colors font-mono">
+                        class="w-full p-4 rounded-xl bg-bg border border-border text-gray-100 placeholder-gray-500
+                               focus:outline-none focus:ring-2 focus:ring-crimson focus:border-transparent transition">
                 </div>
-                 <div class="space-y-2">
-                    <label class="text-xs font-bold text-gray-500 uppercase tracking-wider">Confirm</label>
+                <div>
+                    <label class="block text-gray-400 text-sm mb-2">Confirm</label>
                     <input type="password" placeholder="••••••••" name="confirm"
-                        class="w-full bg-black/40 border border-white/10 rounded p-4 text-white placeholder-gray-700 focus:outline-none focus:border-crimson transition-colors font-mono">
+                        class="w-full p-4 rounded-xl bg-bg border border-border text-gray-100 placeholder-gray-500
+                               focus:outline-none focus:ring-2 focus:ring-crimson focus:border-transparent transition">
                 </div>
             </div>
 
             <!-- Action -->
             <button type="submit" class="w-full py-4 bg-crimson hover:bg-red-700 text-white font-display font-bold text-2xl tracking-widest clip-path-slant shadow-neon transition-all transform hover:-translate-y-1 mt-6">
                 START CAREER
-    </button>
+            </button>
 
         </form>
 

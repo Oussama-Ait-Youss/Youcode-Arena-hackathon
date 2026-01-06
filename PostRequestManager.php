@@ -36,7 +36,9 @@ if (isset($_POST["join"]) && $_POST["join"] === "login") {
     $user = $userRepo->Login($email, $password);
 
     if ($user) {
+        $_SESSION["userrole"] = $user->role;
         if ($user->role ==  User::User) {
+            
             header("Location: profile.php");
             exit();
         }
@@ -52,4 +54,15 @@ if (isset($_POST["join"]) && $_POST["join"] === "login") {
         header("Location: login.php");
         exit();
     }
+}
+
+
+
+if (isset($_POST["changerole"])) {
+    $role = $_POST["changerole"];
+    $id = $_POST["id"];
+    $userRepo = new UserRepo();
+    $userRepo->ChangeRole($id, $role);
+    header("Location: ./admin/dashboard.php");
+    exit();
 }
