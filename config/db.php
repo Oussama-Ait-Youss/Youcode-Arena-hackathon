@@ -1,49 +1,46 @@
 <?php 
-
 class Database {
-    // Hold the class instance.
     private static $instance = null;
     private $connection;
 
     // Database credentials
-    private $host = "localhost";
+    private $host = "172.16.10.160";
+    private $port = 3306;
     private $dbName = "youcodearena";
-    private $username = "root";
-    private $password = "";
+    private $username = "Osama";
+    private $password = "test1234";
 
-    // The constructor is private to prevent initiation with outer code
-    private function __construct() {
+    // Constructor
+    private function construct() {
         try {
             $this->connection = new PDO(
-                "mysql:host={$this->host};dbname={$this->dbName};charset=utf8",
+                "mysql:host={$this->host};port={$this->port};dbname={$this->dbName};charset=utf8mb4",
                 $this->username,
                 $this->password
             );
-           
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             die("Database connection failed: " . $e->getMessage());
         }
     }
 
-    // The object is created from within the class itself only if it doesn't exist
     public static function getInstance() {
         if (!self::$instance) {
+           
             self::$instance = new Database();
         }
         return self::$instance;
     }
 
-    // Get the PDO connection
     public function getConnection() {
+        
         return $this->connection;
+
     }
 
-    // Prevent cloning of the instance 
-    private function __clone() {}
-
-    // Prevent unserializing of the instance
+    private function clone() {}
     public function __wakeup() {}
 }
 
-Database::getInstance()->getConnection(); 
+$conn = Database::getInstance();
+$conn->getConnection();

@@ -137,54 +137,7 @@ tailwind.config = {
             <!-- Action -->
             <button type="submit" class="w-full py-4 bg-crimson hover:bg-red-700 text-white font-display font-bold text-2xl tracking-widest clip-path-slant shadow-neon transition-all transform hover:-translate-y-1 mt-6">
                 START CAREER
-            </button>
-  <form class="space-y-6" action="./PostRequestManager.php" method="POST">
-    <!-- Username -->
-    <div>
-      <label class="block text-gray-400 text-sm mb-2" for="username">Username</label>
-      <input type="text" id="username" placeholder="Your nickname" name="username"
-        class="w-full p-4 rounded-xl bg-bg border border-border text-gray-100 placeholder-gray-500
-               focus:outline-none focus:ring-2 focus:ring-accent1 focus:border-accent1 transition"/>
-    </div>
-
-    <!-- Email -->
-    <div>
-      <label class="block text-gray-400 text-sm mb-2" for="email">Email</label>
-      <input type="email" id="email" placeholder="you@example.com" name="email"
-        class="w-full p-4 rounded-xl bg-bg border border-border text-gray-100 placeholder-gray-500
-               focus:outline-none focus:ring-2 focus:ring-accent1 focus:border-accent1 transition"/>
-    </div>
-
-    <!-- Password -->
-    <div>
-      <label class="block text-gray-400 text-sm mb-2" for="password">Password</label>
-      <input type="password" id="password" placeholder="********" name="password"
-        class="w-full p-4 rounded-xl bg-bg border border-border text-gray-100 placeholder-gray-500
-               focus:outline-none focus:ring-2 focus:ring-accent1 focus:border-accent1 transition"/>
-    </div>
-
-    <!-- Confirm Password -->
-    <div>
-      <label class="block text-gray-400 text-sm mb-2" for="confirm-password">Confirm Password</label>
-      <input type="password" id="confirm-password" placeholder="********"
-        class="w-full p-4 rounded-xl bg-bg border border-border text-gray-100 placeholder-gray-500
-               focus:outline-none focus:ring-2 focus:ring-accent1 focus:border-accent1 transition"/>
-    </div>
-    <input type="hidden" name="join" value="signup"/>
-    <!-- Register Button -->
-    <button type="submit"
-      class="relative overflow-hidden group w-full py-4
-             text-2xl font-display tracking-widest text-white
-             bg-gradient-to-r from-accent1 to-accent3
-             rounded-xl shadow-lg transition-all
-             hover:-translate-y-1 active:scale-95">
-      <span class="relative z-10">REGISTER</span>
-      <span class="absolute left-1/2 bottom-1 h-[3px] w-0 -translate-x-1/2
-             bg-gradient-to-r from-accent1 to-accent3 transition-all duration-300
-             group-hover:w-2/3"></span>
     </button>
-
-  </form>
 
         </form>
 
