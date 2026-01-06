@@ -33,7 +33,41 @@
                 }
             }
         }
-    </script>
+  
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        bg: '#070A10',
+        panel: '#0E1624',
+        border: '#1E293B',
+        accent1: '#38BDF8',
+        accent2: '#8B5CF6',
+        accent3: '#F472B6',
+        danger: '#EF4444',
+        success: '#22C55E'
+      },
+      fontFamily: {
+        display: ['Teko', 'sans-serif'],
+        sans: ['Inter', 'sans-serif']
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
 
     <style>
         body {
@@ -103,7 +137,7 @@
             <!-- Action -->
             <button type="submit" class="w-full py-4 bg-crimson hover:bg-red-700 text-white font-display font-bold text-2xl tracking-widest clip-path-slant shadow-neon transition-all transform hover:-translate-y-1 mt-6">
                 START CAREER
-            </button>
+    </button>
 
         </form>
 
