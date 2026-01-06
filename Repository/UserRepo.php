@@ -1,9 +1,15 @@
 <?php 
 include_once __DIR__ . '/../interface/interface.php';   
-include_once './config/db.php';
+include_once __DIR__ . '/../config/db.php';
 
 class userRepo implements ContractInterface {
       private $db;
+      public function __construct() {
+        
+        $conn = Database::getInstance();
+
+        $this->db = $conn->getConnection();
+    }
     public function findById($id) {
       
     }
@@ -34,9 +40,7 @@ class userRepo implements ContractInterface {
 
 
   
-    public function __construct() {
-        $this->db = Database::getInstance()->getConnection();
-    }
+    
 
 
 
@@ -48,7 +52,7 @@ class userRepo implements ContractInterface {
             $checkStmt = $this->db->prepare("SELECT id FROM users WHERE email = :email LIMIT 1");
             $checkStmt->execute(['email' => $user->email]);
             if ($checkStmt->rowCount() > 0) {
-                // here khasni ntl3 xi alert;
+                // here alert;
             }
             $stmt = $this->db->prepare("INSERT INTO users (username, email, password, role ,created_at
             ) VALUES (:username, :email, :password, :role, :created_at)");
