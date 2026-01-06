@@ -1,5 +1,5 @@
 <?php include_once "../PostRequestManager.php"; 
-if (isset( $_SESSION["userrole"]) &&  $_SESSION["userrole"] != User::Organizer)  {
+if (isset( $_SESSION["userrole"]) &&  $_SESSION["userrole"] == User::Organizer)  {
   header("Location: ../login.php");
 }
 
@@ -14,6 +14,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouGame Arena – Organizer Portal</title>
+   
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -33,6 +34,9 @@ session_start();
                         gold: '#FFD700',
                         violet: '#8B5CF6',
                         success: '#22C55E'
+
+                        success: '#22C55E',
+                        warning: '#FACC15'
                     },
                     fontFamily: {
                         display: ['Teko', 'sans-serif'],
@@ -76,12 +80,13 @@ session_start();
         <!-- Logo -->
         <div class="h-24 flex items-center justify-center border-b border-white/5">
              <div class="text-3xl font-display font-bold text-white tracking-widest">
-                YOU<span class="text-crimson">ORG</span>
+             
             </div>
         </div>
 
         <!-- Nav -->
         <nav class="flex-1 p-6 space-y-2">
+
             <div class="text-xs text-gray-500 font-bold uppercase tracking-widest mb-4">Management</div>
             
             <a class="flex items-center px-4 py-3 rounded-xl bg-crimson/10 border border-crimson/20 text-white group cursor-pointer">
@@ -107,6 +112,19 @@ session_start();
             </a>
             
             <a href="../index.php" class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer mt-10">
+
+            <a href="#" class="flex items-center px-4 py-3 rounded-xl bg-crimson/10 border border-crimson/20 text-white group cursor-pointer">
+                <span class="text-xl mr-3">🏆</span>
+                <span class="font-bold tracking-wide">My Tournaments</span>
+            </a>
+            
+            <a href="createTour.php" class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer">
+                <span class="text-xl mr-3 group-hover:scale-110 transition">➕</span>
+                <span class="font-bold tracking-wide">Create Tournament</span>
+            </a>
+
+            <a href="index.php" class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer mt-10">
+
                 <span class="text-xl mr-3">↩️</span>
                 <span class="font-bold tracking-wide">Back to Hub</span>
             </a>
@@ -115,18 +133,28 @@ session_start();
         <!-- Profile -->
         <div class="p-6 border-t border-white/5">
             <div class="flex items-center gap-3">
+
                 <div class="w-10 h-10 rounded bg-crimson flex items-center justify-center font-bold text-black font-display text-xl">
                     OR
                 </div>
                 <div>
                      <div class="text-sm font-bold text-white leading-none">Organizer</div>
                      <div class="text-[10px] text-green-500 font-bold uppercase tracking-widest mt-1">● Online</div>
+
+                <div class="w-10 h-10 rounded bg-gray-800 flex items-center justify-center font-bold text-gray-400 font-display text-xl border border-white/10">
+                    AM
+                </div>
+                <div>
+                     <div class="text-sm font-bold text-white leading-none">Amine Manager</div>
+                     <div class="text-[10px] text-violet font-bold uppercase tracking-widest mt-1">Organizer</div>
+
                 </div>
             </div>
         </div>
     </aside>
 
     <!-- MAIN CONTENT -->
+
     <main class="flex-1 ml-72 p-10 overflow-y-auto h-screen relative z-10">
         
         <!-- Header -->
@@ -211,3 +239,7 @@ session_start();
 
 </body>
 </html>
+
+  
+
+

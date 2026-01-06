@@ -117,7 +117,7 @@
                 <a href="index.php" class="text-gray-400 hover:text-white font-display tracking-wider text-lg transition-colors">HUB</a>
                 <a href="tournament.php" class="text-gray-400 hover:text-white font-display tracking-wider text-lg transition-colors">TOURNAMENTS</a>
                 <a href="profile.php" class="text-white font-display tracking-wider text-lg relative">
-                    RANKING
+                    PROFILE
                      <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-crimson shadow-neon"></span>
                 </a>
             </div>
