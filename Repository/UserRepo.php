@@ -9,7 +9,27 @@ class userRepo implements ContractInterface {
     }
 
     public function findAll() {
-    
+        $stmt = $this->db->prepare("SELECT * FROM users");
+        $stmt->execute();
+        $usersData = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $users = [];
+
+        foreach ($usersData as $data) {
+            $user = new User(
+             
+                $data->username,
+                $data->email,
+                $data->password,
+                $data->role,
+                $data->created_at,
+             
+            );
+            $user->setID($data->id);
+            $user->avatar_url = $data->avatar_url ?? '';
+            $user->bio = $data->bio ?? '';
+            $users[] = $user;
+        }
+        return $users;
     }
 
 
@@ -91,7 +111,7 @@ class userRepo implements ContractInterface {
        
     } catch (PDOException $e) {
         // Log the error for debugging
-        header("Location: ./lojgin.php");
+        header("Location: ./login.php");
         exit();
     }
 }
