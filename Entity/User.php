@@ -1,4 +1,4 @@
-<?php   
+<?php
 
 
 
@@ -16,7 +16,7 @@ class User
     const Organizer = 'organizer';
     const User = 'user';
     public function __construct(
-        int $id,
+
         string $username,
         string $email,
         string $password,
@@ -25,7 +25,7 @@ class User
         ?string $bio,
         string $created_at
     ) {
-        $this->id = $id;
+
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
@@ -37,5 +37,9 @@ class User
     public function __get(string $property)
     {
         return $this->$property;
+    }
+    public function setID($id)
+    {
+        $this->id = $id;
     }
 }
