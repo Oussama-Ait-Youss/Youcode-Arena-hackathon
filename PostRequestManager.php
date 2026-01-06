@@ -2,7 +2,7 @@
 include_once __DIR__ . '/Entity/User.php';
 include_once __DIR__ . '/Repository/UserRepo.php';
 
-
+session_start();
 
 if (isset($_POST["join"]) && $_POST["join"] === "signup") {
     // Include necessary files
@@ -13,7 +13,7 @@ if (isset($_POST["join"]) && $_POST["join"] === "signup") {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $role = User::User; 
-   
+    $_SESSION['username'] = $username ;
     $created_at = date('Y-m-d');
 
     $user = new User($username, $email, $password, $role,$created_at);

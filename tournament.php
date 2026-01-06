@@ -116,7 +116,7 @@
 
             <!-- LINKS -->
             <div class="hidden md:flex items-center gap-8">
-                <a href="index.php" class="text-gray-400 hover:text-white font-display tracking-wider text-lg transition-colors">HUB</a>
+                <a href="competionhub.php" class="text-gray-400 hover:text-white font-display tracking-wider text-lg transition-colors">Competition Hub</a>
                 <a href="tournament.php" class="text-white font-display tracking-wider text-lg relative">
                     TOURNAMENTS
                     <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-crimson shadow-neon"></span>

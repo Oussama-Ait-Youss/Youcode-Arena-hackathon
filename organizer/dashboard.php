@@ -84,12 +84,12 @@ session_start();
             </div>
         </div>
 
-        <!-- Nav -->
+        
         <nav class="flex-1 p-6 space-y-2">
 
-            <div class="text-xs text-gray-500 font-bold uppercase tracking-widest mb-4">Management</div>
+            <!-- <div class="text-xs text-gray-500 font-bold uppercase tracking-widest mb-4">Management</div> -->
             
-            <a class="flex items-center px-4 py-3 rounded-xl bg-crimson/10 border border-crimson/20 text-white group cursor-pointer">
+            <!-- <a class="flex items-center px-4 py-3 rounded-xl bg-crimson/10 border border-crimson/20 text-white group cursor-pointer">
                 <span class="text-xl mr-3 group-hover:scale-110 transition">📊</span>
                 <span class="font-bold tracking-wide">Dashboard</span>
             </a>
@@ -109,16 +109,16 @@ session_start();
              <a class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer">
                 <span class="text-xl mr-3">⚙️</span>
                 <span class="font-bold tracking-wide">Settings</span>
-            </a>
+            </a> -->
             
             <a href="../index.php" class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer mt-10">
 
-            <a href="#" class="flex items-center px-4 py-3 rounded-xl bg-crimson/10 border border-crimson/20 text-white group cursor-pointer">
+            <a href="./dashboard.php" class="flex items-center px-4 py-3 rounded-xl bg-crimson/10 border border-crimson/20 text-white group cursor-pointer">
                 <span class="text-xl mr-3">🏆</span>
                 <span class="font-bold tracking-wide">My Tournaments</span>
             </a>
             
-            <a href="createTour.php" class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer">
+            <a href="./create.php" class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer">
                 <span class="text-xl mr-3 group-hover:scale-110 transition">➕</span>
                 <span class="font-bold tracking-wide">Create Tournament</span>
             </a>

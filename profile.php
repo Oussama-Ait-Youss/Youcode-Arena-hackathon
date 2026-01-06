@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
@@ -114,7 +121,7 @@
 
             <!-- LINKS -->
             <div class="hidden md:flex items-center gap-8">
-                <a href="index.php" class="text-gray-400 hover:text-white font-display tracking-wider text-lg transition-colors">HUB</a>
+                <a href="./competionhub.php" class="text-gray-400 hover:text-white font-display tracking-wider text-lg transition-colors">HUB</a>
                 <a href="tournament.php" class="text-gray-400 hover:text-white font-display tracking-wider text-lg transition-colors">TOURNAMENTS</a>
                 <a href="profile.php" class="text-white font-display tracking-wider text-lg relative">
                     PROFILE
@@ -162,7 +169,7 @@
                     <div class="inline-block px-3 py-0.5 border border-cyan/30 bg-cyan/10 text-cyan text-[10px] items-center tracking-[0.2em] font-bold rounded mb-2">
                         PRO PLAYER
                     </div>
-                    <h1 class="text-5xl md:text-7xl font-display font-bold text-white tracking-wide">OTMANE MELLOUKI</h1>
+                    <h1 class="text-5xl md:text-7xl font-display font-bold text-white tracking-wide"><?= $_SESSION['username'] ?></h1>
                     <p class="text-gray-400 text-lg font-light tracking-wider">CASABLANCA, MOROCCO • <span class="text-crimson">STRIKER</span></p>
                 </div>
 

@@ -72,7 +72,7 @@
 
         <!-- Nav -->
         <nav class="flex-1 p-6 space-y-2">
-            <a href="myTour.php" class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer">
+            <a href="./dashboard.php" class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer">
                 <span class="text-xl mr-3">🏆</span>
                 <span class="font-bold tracking-wide">My Tournaments</span>
             </a>
