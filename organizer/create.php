@@ -72,7 +72,7 @@
 
         <!-- Nav -->
         <nav class="flex-1 p-6 space-y-2">
-            <a href="myTour.php" class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer">
+            <a href="dashboard.php" class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer">
                 <span class="text-xl mr-3">🏆</span>
                 <span class="font-bold tracking-wide">My Tournaments</span>
             </a>
@@ -259,8 +259,8 @@
 
              <!-- ACTION -->
             <div class="flex justify-end pt-4">
-                <button onclick="window.location.href='myTour.php'" type="button" class="px-8 py-4 bg-transparent hover:bg-white/5 text-gray-400 font-bold tracking-widest mr-4 transition rounded">CANCEL</button>
-                <button onclick="window.location.href='myTour.php'" type="submit" class="px-12 py-4 bg-crimson hover:bg-red-700 text-white font-display font-bold text-3xl tracking-widest clip-path-slant shadow-neon transition transform hover:-translate-y-1">
+                <button onclick="window.location.href='dashboard.php'" type="button" class="px-8 py-4 bg-transparent hover:bg-white/5 text-gray-400 font-bold tracking-widest mr-4 transition rounded">CANCEL</button>
+                <button onclick="window.location.href='dashboard.php'" type="submit" class="px-12 py-4 bg-crimson hover:bg-red-700 text-white font-display font-bold text-3xl tracking-widest clip-path-slant shadow-neon transition transform hover:-translate-y-1">
                     PUBLISH EVENT
                 </button>
             </div>

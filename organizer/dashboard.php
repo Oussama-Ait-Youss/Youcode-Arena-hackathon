@@ -79,7 +79,7 @@
                 <span class="font-bold tracking-wide">My Tournaments</span>
             </a>
             
-            <a href="createTour.php" class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer">
+            <a href="create.php" class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition cursor-pointer">
                 <span class="text-xl mr-3 group-hover:scale-110 transition">➕</span>
                 <span class="font-bold tracking-wide">Create Tournament</span>
             </a>
@@ -118,7 +118,7 @@
                 </p>
             </div>
 
-            <a href="createTour.php" class="px-8 py-4 bg-crimson hover:bg-red-700 text-white font-display font-bold text-2xl tracking-widest clip-path-slant shadow-neon transition transform hover:-translate-y-1">
+            <a href="create.php" class="px-8 py-4 bg-crimson hover:bg-red-700 text-white font-display font-bold text-2xl tracking-widest clip-path-slant shadow-neon transition transform hover:-translate-y-1">
                 CREATE NEW
             </a>
         </header>
