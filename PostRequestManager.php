@@ -1,6 +1,6 @@
 <?php
-include_once './Entity/User.php';
-include_once './Repository/UserRepo.php';
+include_once __DIR__ . '/Entity/User.php';
+include_once __DIR__ . '/Repository/UserRepo.php';
 
 
 

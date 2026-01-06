@@ -1,6 +1,7 @@
 <?php include_once "../PostRequestManager.php"; 
 session_start();
-$users = new userRepo()->findAll();
+$usersibj = new userRepo();
+$users = $usersibj->findAll();
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">

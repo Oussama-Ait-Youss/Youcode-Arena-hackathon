@@ -74,7 +74,7 @@
 
       
        
-=======
+
   <form class="space-y-6" action="./PostRequestManager.php" method="POST">
     <!-- Email -->
     <div>
@@ -106,7 +106,7 @@
             </button>
 
 
-            
+
         </form>
 
         <!-- Footer -->
