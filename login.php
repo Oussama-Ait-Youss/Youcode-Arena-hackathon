@@ -80,6 +80,23 @@
                 <input type="email" placeholder="agent@yougame.arena" 
                     class="w-full bg-black/40 border border-white/10 rounded p-4 text-white placeholder-gray-700 focus:outline-none focus:border-crimson transition-colors font-mono">
             </div>
+=======
+  <form class="space-y-6" action="./PostRequestManager.php" method="POST">
+    <!-- Email -->
+    <div>
+      <label class="block text-gray-400 text-sm mb-2" for="email">Email</label>
+      <input type="email" id="email" placeholder="you@example.com" name="email"
+        class="w-full p-4 rounded-xl bg-bg border border-border text-gray-100 placeholder-gray-500
+               focus:outline-none focus:ring-2 focus:ring-accent1 focus:border-accent1 transition"/>
+    </div>
+<input type="hidden" name="join" value="login"/>
+    <!-- Password -->
+    <div>
+      <label class="block text-gray-400 text-sm mb-2" for="password">Password</label>
+      <input type="password" id="password" placeholder="********" name="password"
+        class="w-full p-4 rounded-xl bg-bg border border-border text-gray-100 placeholder-gray-500
+               focus:outline-none focus:ring-2 focus:ring-accent1 focus:border-accent1 transition"/>
+    </div>
 
             <div class="space-y-2">
                 <div class="flex justify-between">
