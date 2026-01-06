@@ -30,6 +30,18 @@ tailwind.config = {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 
 <style>
